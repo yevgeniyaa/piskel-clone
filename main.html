@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>Piskel Clone</title>
+</head>
+<body>
+<div class="player-container">
+    <header class="header">
+        <button class="header__menu-button"><i class="fas fa-bars"></i></button>
+        <h1 class="header__title">Piskel clone</h1>
+    </header>
+    <main class="content-container">
+        <div class="tools">
+            <div class="tools-container">
+                <div class="pen-size-container">
+                    <span class="tooltip__text">Pen size from 1 to 4</span>
+                    <ul class="menu pen-size">
+                        <li>
+                            <button class="pen-size__button" data-size="1">
+                                <i class="fa fa-square-full"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="pen-size__button" data-size="2">
+                                <i class="fa fa-square-full"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="pen-size__button" data-size="3">
+                                <i class="fa fa-square-full"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="pen-size__button" data-size="4">
+                                <i class="fa fa-square-full"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="menu palette">
+                    <li>
+                        <button class="menu__button" data-tool="0">
+                            <span class="tooltip__text">Draw</span>
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="1">
+                            <span class="tooltip__text">Paint bucket</span>
+                            <i class="fa fa-fill-drip"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="7">
+                            <span class="tooltip__text">Swap color</span>
+                            <i class="fas fa-bullseye"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="2">
+                            <span class="tooltip__text">Circle</span>
+                            <i class="far fa-circle"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="6">
+                            <span class="tooltip__text">Rectangle</span>
+                            <i class="far fa-square"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="3">
+                            <span class="tooltip__text">Line</span>
+                            <i class="fa fa-pen-fancy"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="4">
+                            <span class="tooltip__text">Choose color</span>
+                            <i class="fa fa-eye-dropper"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="5">
+                            <span class="tooltip__text">Eraser</span>
+                            <i class="fa fa-eraser"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="8">
+                            <span class="tooltip__text">Move</span>
+                            <i class="fa fa-arrows-alt"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="9">
+                            <span class="tooltip__text">Shape selection</span>
+                            <i class="fas fa-magic"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="10">
+                            <span class="tooltip__text">
+                                Lighten/
+                                <br>
+                                Darken (CTRL)
+                            </span>
+                            <i class="fas fa-adjust"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="11">
+                            <span class="tooltip__text">Dithering</span>
+                            <i class="fas fa-chess-board"></i>
+                        </button>
+                    </li>
+                </ul>
+                <ul class="menu color-picker">
+                    <li>
+                        <button class="menu__button primary-color">
+                            <span class="tooltip__text">Primary color</span>
+                            <input type="color" name="primary-color" class="color-picker__input"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button secondary-color">
+                            <span class="tooltip__text">Secondary color</span>
+                            <input type="color" name="secondary-color" class="color-picker__input"/>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <button class="menu__button shortcuts__open-button menu">
+                <span class="tooltip__text">Keyboard shortcuts</span>
+                <i class="fa fa-keyboard"></i>
+            </button>
+        </div>
+        <div class="frames">
+            <div class="frame-items">
+                <div class="frame-container">
+                    <canvas class="frame _current" width="99" height="99" frame-id="0" draggable="true"></canvas>
+                    <div class="frame__index frame__tile">1</div>
+                    <div class="frame__duplicate-action frame__tile"><i class="fa fa-clone"></i></div>
+                    <div class="frame__remove-action frame__tile"><i class="fa fa-times"></i></div>
+                    <div class="frame__move-action frame__tile"><i class="fa fa-arrows-alt"></i></div>
+                </div>
+            </div>
+            <div class="frame__add-new">
+                <i class="fa fa-plus"></i>
+                <span class="frame__add-new-text">Add new frame</span>
+            </div>
+        </div>
+        <div class="canvas"></div>
+        <div class="preview">
+            <div class="preview-container">
+                <div class="preview__canvas-container">
+                    <canvas class="preview__canvas" width="200" height="200"></canvas>
+                </div>
+                <div class="preview__full-screen-action frame__tile"><i class="fa fa-expand-arrows-alt"></i></div>
+            </div>
+            <div class="preview__fps">
+                <span>0 FPS</span>
+                <input type="range" min="0" max="24" value="0">
+            </div>
+            <div class="drawing-info"></div>
+        </div>
+        <div class="settings">
+            <div class="settings-container">
+                <ul class="menu settings__buttons">
+                    <li>
+                        <button class="menu__button">
+                            <span class="tooltip__text">Settings</span>
+                            <i class="fa fa-cog"></i>
+                        </button>
+                    </li>
+                </ul>
+                <div class="settings__content">
+                    <div class="settings__section canvas-size">
+                        <h4 class="settings-section__title">Canvas size</h4>
+                        <div class="settings-section__input">
+                            <label for="canvas-width">Width:</label>
+                            <input type="number" id="canvas-width">
+                        </div>
+                        <div class="settings-section__input">
+                            <label for="canvas-height">Height:</label>
+                            <input type="number" id="canvas-height">
+                        </div>
+                        <button class="menu__button section__button" data-action="resize">Resize</button>
+                    </div>
+                    <div class="settings__section canvas-save">
+                        <h4 class="settings-section__title">Save image</h4>
+                        <button class="menu__button section__button" data-action="save">Save</button>
+                    </div>
+                    <div class="settings__section canvas-export">
+                        <h4 class="settings-section__title">Export image</h4>
+                        <div class="settings-section__input">
+                            <label for="export-width">Width:</label>
+                            <input type="number" id="export-width">
+                        </div>
+                        <div class="settings-section__input">
+                            <label for="export-height">Height:</label>
+                            <input type="number" id="export-height">
+                        </div>
+                        <div class="settings-section__input">
+                            <label for="export-name">Name:</label>
+                            <input type="text" id="export-name">
+                            <select size="1" name="export-format">
+                                <option value="gif" selected>.gif</option>
+                                <option value="apng">.png</option>
+                                <option value="psk">.psk</option>
+                            </select>
+                        </div>
+                        <button class="menu__button section__button" data-action="export">Export</button>
+                    </div>
+                    <div class="settings__section canvas-import">
+                        <h4 class="settings-section__title">Import image</h4>
+                        <p>Choose .psk file to upload. Current unsaved changes will be overwritten.</p>
+                        <input type="file" id="import-file-path" accept=".psk, .piskel">
+                        <button class="menu__button section__button" data-action="import">Import</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shortcuts-container">
+            <div class="shortcuts__modal">
+                <div class="shortcuts__header">
+                    <h2>Keyboard shortcuts</h2>
+                    <button class="menu__button shortcuts__close-button">
+                        <span class="tooltip__text">Close</span>
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="shortcuts__body">
+                    <div class="shortcuts__section">
+                        <h3 class="shortcuts__section-title">Drawing tools</h3>
+                        <ul class="shortcuts__items">
+                            <li>
+                                <button class="shortcuts__button" data-action-id="0">
+                                    <span class="shortcuts__tool-icon"><i class="fa fa-pencil-alt"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Draw
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="1">
+                                    <span class="shortcuts__tool-icon"><i class="fa fa-fill-drip"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Paint bucket
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="7">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-bullseye"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Swap color
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="2">
+                                    <span class="shortcuts__tool-icon"><i class="far fa-circle"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Circle
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="6">
+                                    <span class="shortcuts__tool-icon"><i class="far fa-square"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Rectangle
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="3">
+                                    <span class="shortcuts__tool-icon"><i class="fa fa-pen-fancy"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Line
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="4">
+                                    <span class="shortcuts__tool-icon"><i class="fa fa-eye-dropper"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Choose color
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="5">
+                                    <span class="shortcuts__tool-icon"><i class="fa fa-eraser"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Eraser
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="8">
+                                    <span class="shortcuts__tool-icon"><i class="fa fa-arrows-alt"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Move
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="9">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-magic"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Shape selection
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="10">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-adjust"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Lighten
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="11">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-chess-board"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Dithering
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="shortcuts__section">
+                        <h3 class="shortcuts__section-title">Other tools</h3>
+                        <ul class="shortcuts__items">
+                            <li>
+                                <button class="shortcuts__button" data-action-id="20">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Increase pen size
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="21">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Decrease pen size
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="22">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Copy selection
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="23">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Cut selection
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="24">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Paste selection
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="25">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Commit selection
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="26">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Remove selection
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="27">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Save image
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="28">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Open image
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="40">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Open shortcuts editor
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="41">
+                                    <span class="shortcuts__key-icon"></span>
+                                    Close shortcuts editor
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="shortcuts__input-container">
+                        <input type="text" class="shortcuts__input">
+                    </div>
+                </div>
+                <div class="shortcuts__footer">
+                    <h3 class="shortcuts__help">
+                        <span class="tooltip__text">Click on a shortcut to change the key.<br><br>
+                            When the shortcut is marked, press the key on your keyboard to assign it.<br><br>
+                            Click <i class="fa fa-undo"></i> ('Reset to default') to erase all custom shortcuts.</span>
+                        Help ?
+                    </h3>
+                    <button class="menu__button shortcuts__reset-button">
+                        <span class="tooltip__text">Reset to default</span>
+                        <i class="fa fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="src/lib/gif/gif.js"></script>
+<script src="src/lib/download.js"></script>
+<script src="src/lib/apng/canvas2apng.js"></script>
+<script type="text/javascript" src="src/index.bundle.js"></script></body>
+</html>
