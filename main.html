@@ -8,8 +8,21 @@
 <body>
 <div class="player-container">
     <header class="header">
-        <button class="header__menu-button"><i class="fas fa-bars"></i></button>
-        <h1 class="header__title">Piskel clone</h1>
+        <div class="header__left-content">
+            <button class="header__menu-button"><i class="fas fa-bars"></i></button>
+            <h1 class="header__title">Piskel clone</h1>
+        </div>
+        <div class="header__right-content">
+            <div class="user-info"></div>
+            <button class="authorize-button">
+                <i class="fab fa-google"></i>
+                Authorize
+            </button>
+            <button class="signout-button">
+                <i class="fas fa-sign-out-alt"></i>
+                Sign Out
+            </button>
+        </div>
     </header>
     <main class="content-container">
         <div class="tools">
@@ -116,6 +129,42 @@
                             <i class="fas fa-chess-board"></i>
                         </button>
                     </li>
+                    <li>
+                        <button class="menu__button" data-tool="13">
+                            <span class="tooltip__text">
+                                Rotate/
+                                <br>
+                                Counter-clockwise (CTRL)
+                            </span>
+                            <i class="fas fa-undo fa-rotate-90"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="14">
+                            <span class="tooltip__text">
+                                Invert colors
+                            </span>
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="15">
+                            <span class="tooltip__text">
+                                Polygon
+                            </span>
+                            <i class="fas fa-draw-polygon"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu__button" data-tool="16">
+                            <span class="tooltip__text">
+                                Mirror pen/
+                                <br>
+                                Horizontal (CTRL)
+                            </span>
+                            <i class="fas fa-drafting-compass"></i>
+                        </button>
+                    </li>
                 </ul>
                 <ul class="menu color-picker">
                     <li>
@@ -189,10 +238,6 @@
                         </div>
                         <button class="menu__button section__button" data-action="resize">Resize</button>
                     </div>
-                    <div class="settings__section canvas-save">
-                        <h4 class="settings-section__title">Save image</h4>
-                        <button class="menu__button section__button" data-action="save">Save</button>
-                    </div>
                     <div class="settings__section canvas-export">
                         <h4 class="settings-section__title">Export image</h4>
                         <div class="settings-section__input">
@@ -212,7 +257,17 @@
                                 <option value="psk">.psk</option>
                             </select>
                         </div>
-                        <button class="menu__button section__button" data-action="export">Export</button>
+                        <button class="menu__button section__button" data-action="export">Download</button>
+                    </div>
+                    <div class="settings__section canvas-google-upload">
+                        <h4 class="settings-section__title">Upload to GoogleDrive</h4>
+                        <button class="menu__button section__button" data-action="google-upload">Upload</button>
+                        <span class="upload-results"></span>
+                    </div>
+                    <div class="settings__section canvas-giphy-upload">
+                        <h4 class="settings-section__title">Upload to Giphy</h4>
+                        <button class="menu__button section__button" data-action="giphy-upload">Upload</button>
+                        <span class="upload-results"></span>
                     </div>
                     <div class="settings__section canvas-import">
                         <h4 class="settings-section__title">Import image</h4>
@@ -318,6 +373,34 @@
                                     <span class="shortcuts__tool-icon"><i class="fas fa-chess-board"></i></span>
                                     <span class="shortcuts__key-icon"></span>
                                     Dithering
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="13">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-undo fa-rotate-90"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Rotate
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="14">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-moon"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Invert colors
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="15">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-draw-polygon"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Polygon
+                                </button>
+                            </li>
+                            <li>
+                                <button class="shortcuts__button" data-action-id="16">
+                                    <span class="shortcuts__tool-icon"><i class="fas fa-drafting-compass"></i></span>
+                                    <span class="shortcuts__key-icon"></span>
+                                    Mirror pen
                                 </button>
                             </li>
                         </ul>
